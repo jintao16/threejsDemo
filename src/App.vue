@@ -1,12 +1,12 @@
 <template>
-  <div class="common-layout">
-    <el-container>
+  <div class="common-layout w-100 h-100">
+    <el-container class="w-100 h-100">
       <el-header class="o-h">
         <el-menu :default-active="activeIndex" class="el-menu-demo w-100" mode="horizontal" router>
           <el-menu-item v-for="item in routesArr" :key="item.name" :index="item.path">{{ item.name }}</el-menu-item>
         </el-menu>
       </el-header>
-      <el-main> <router-view /></el-main>
+      <el-main class="main"> <router-view /></el-main>
     </el-container>
   </div>
 
@@ -50,5 +50,10 @@ body {
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.main {
+  width: 100%;
+  height: calc(100% - 60px);
 }
 </style>
