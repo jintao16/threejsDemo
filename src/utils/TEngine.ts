@@ -26,7 +26,7 @@ export class TEngine {
 
     constructor(dom: HTMLElement) {
         this.dom = dom
-        this.renderer = new WebGLRenderer()
+        this.renderer = new WebGLRenderer({ antialias: true })
         console.log('TEngine实例了')
 
 
@@ -60,6 +60,15 @@ export class TEngine {
 
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+        this.controls.enableDamping = true
+        this.controls.damping = 0.05
+        // 禁止右键平移，按住ctrl+鼠标左键仍可平移
+        this.controls.mouseButtons = {
+            LEFT: THREE.MOUSE.ROTATE,
+            MIDDLE: THREE.MOUSE.DOLLY,
+            RIGHT: null
+        }
+
 
         const stats = Stats()
         const statsDom = stats.domElement
@@ -72,12 +81,12 @@ export class TEngine {
         this.animation()
     }
     animation() {
-        this.renderer.render(this.scene, this.camera)
+    
+        this.controls.autoRotate = true
         this.controls && this.controls.update()
-        this.mesh.position.x += 0.1
-        // this.mesh.position.z += 0.1
-        this.camera.position.x += 0.1
+ 
         this.stats.update()
+        this.renderer.render(this.scene, this.camera)
         requestAnimationFrame(this.animation.bind(this))
     }
 }
