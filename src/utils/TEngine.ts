@@ -9,6 +9,7 @@ import {
     AmbientLight,
     Vector3,
     AxesHelper,
+    Object3D
 
 } from "three"
 import * as THREE from "three";
@@ -21,7 +22,6 @@ export class TEngine {
     private scene: Scene
     private camera: PerspectiveCamera
     private controls: OrbitControls
-    private mesh: Mesh
     private stats: Stats
 
     constructor(dom: HTMLElement) {
@@ -40,12 +40,6 @@ export class TEngine {
         this.renderer.setSize(dom.offsetWidth, dom.offsetHeight, true)
         this.renderer.setClearColor(0xb9d3ff, 1)
 
-        const mesh: Mesh = new Mesh(
-            new BoxGeometry(50, 50, 50),
-            new MeshStandardMaterial({ color: 0xffddff, opacity: 0.5 })
-        )
-        this.mesh = mesh
-        this.scene.add(mesh)
 
         const ambient = new AmbientLight(0x444444, 10)
         this.scene.add(ambient)
@@ -61,7 +55,6 @@ export class TEngine {
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
         this.controls.enableDamping = true
-        this.controls.damping = 0.05
         // 禁止右键平移，按住ctrl+鼠标左键仍可平移
         this.controls.mouseButtons = {
             LEFT: THREE.MOUSE.ROTATE,
@@ -80,11 +73,17 @@ export class TEngine {
 
         this.animation()
     }
+    addObject(...object: Object3D[]) {
+        object.forEach(obj => {
+            this.scene.add(obj)
+        })
+
+    }
     animation() {
-    
+
         this.controls.autoRotate = true
         this.controls && this.controls.update()
- 
+
         this.stats.update()
         this.renderer.render(this.scene, this.camera)
         requestAnimationFrame(this.animation.bind(this))

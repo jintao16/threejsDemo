@@ -5,6 +5,11 @@
             "@/*": [
                 "src/*"
             ]
-        }
+        },
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "types": [
+            "three"
+        ]
     },
 }

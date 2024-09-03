@@ -5,12 +5,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { TEngine } from '@/utils/TEngine'
-
+import { basicObjectList } from '@/utils/TBasicObjects'
 const threeTarget = ref(null)
 
 
 const init = () => {
-    new TEngine(threeTarget.value!)
+    const TE = new TEngine(threeTarget.value!)
+    TE.addObject(...basicObjectList)
 }
 onMounted(() => {
     init()
