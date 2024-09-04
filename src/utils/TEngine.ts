@@ -41,8 +41,6 @@ export class TEngine {
         this.renderer.setClearColor(0xb9d3ff, 1)
 
 
-        const ambient = new AmbientLight(0x444444, 10)
-        this.scene.add(ambient)
 
         const axesHelper = new AxesHelper(100)
         axesHelper.position.set(0, 0, 0)
