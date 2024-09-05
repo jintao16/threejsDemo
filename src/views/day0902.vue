@@ -8,13 +8,14 @@ import { TEngine } from '@/utils/TEngine'
 import { basicObjectList } from '@/utils/TBasicObjects'
 // import { TCanvasTextureEditors } from '@/utils/TCanvasTextureEditors';
 import { lightsList } from '@/utils/TLights';
+import { helperList } from '@/utils/THelper';
+
 const threeTarget = ref(null)
-
-
 const init = () => {
     const TE = new TEngine(threeTarget.value!)
     TE.addObject(...basicObjectList)
     TE.addObject(...lightsList)
+    TE.addObject(...helperList)
 
 
     // const testCanvas = new TCanvasTextureEditors()

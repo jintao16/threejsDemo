@@ -42,13 +42,7 @@ export class TEngine {
 
 
 
-        const axesHelper = new AxesHelper(100)
-        axesHelper.position.set(0, 0, 0)
-        axesHelper.material.depthTest = false
-        this.scene.add(axesHelper)
 
-        const gridHelper = new THREE.GridHelper(200, 30, new THREE.Color(0x888888), new THREE.Color(0x444444))
-        this.scene.add(gridHelper)
 
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
