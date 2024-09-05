@@ -39,6 +39,7 @@ export class TEngine {
         dom.appendChild(this.renderer.domElement)
         this.renderer.setSize(dom.offsetWidth, dom.offsetHeight, true)
         this.renderer.setClearColor(0xb9d3ff, 1)
+        this.renderer.shadowMap.enabled = true
 
 
 
