@@ -9,6 +9,7 @@ import { basicObjectList } from '@/utils/TBasicObjects'
 // import { TCanvasTextureEditors } from '@/utils/TCanvasTextureEditors';
 import { lightsList } from '@/utils/TLights';
 import { helperList } from '@/utils/THelper';
+import { codeModelList } from '@/utils/TCodeModels';
 
 const threeTarget = ref(null)
 const init = () => {
@@ -16,6 +17,7 @@ const init = () => {
     TE.addObject(...basicObjectList)
     TE.addObject(...lightsList)
     TE.addObject(...helperList)
+    TE.addObject(...codeModelList)
 
 
     // const testCanvas = new TCanvasTextureEditors()

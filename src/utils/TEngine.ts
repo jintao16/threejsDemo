@@ -74,7 +74,7 @@ export class TEngine {
     }
     animation() {
 
-        this.controls.autoRotate = true
+        // this.controls.autoRotate = true
         this.controls && this.controls.update()
 
         this.stats.update()
